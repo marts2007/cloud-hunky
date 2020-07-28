@@ -193,9 +193,10 @@ class ACIWorker:
                                                        container.name)
             self.aci_client.container_groups.delete(self.resource_group.name,
                                                     container_group_name)
+            return container_group_name, logs
+
         except Exception as exp:
             cloudhunky_logger.exception(exp)
-        return container_group_name, logs
 
     def prepare_azure_volumes(self, afs_volumes : list = []):
         volumes = []
